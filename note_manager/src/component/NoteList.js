@@ -12,8 +12,8 @@ constructor(props) {
 
 componentWillMount() {
   firebaseConnect.on('value',(notes)=>{
-    console.log(notes.val());
-    console.log(notes.val().noteTitle);
+   // console.log(notes.val());
+   // console.log(notes.val().noteTitle);
     var arrayData = [];
     notes.forEach(element => {
       const key = element.key;
@@ -30,11 +30,11 @@ componentWillMount() {
     });
 });
 }
-  getData = () => {
-   if(this.state.dataFirebase){
-    console.log(this.state.dataFirebase);
-   }
-  }
+  // getData = () => {
+  //  if(this.state.dataFirebase){
+  //   console.log(this.state.dataFirebase);
+  //  }
+  // }
     render() {
 
         return (
@@ -43,7 +43,14 @@ componentWillMount() {
         {
           this.state.dataFirebase.map((value, key)=>{
             return (
-              <NoteItem key={key} i={key} id={value.id} noteTittle={value.noteTitle} noteContent={value.noteContent}></NoteItem>
+              <NoteItem 
+              key={key} 
+              i={key} 
+              id={value.id} 
+              noteTittle={value.noteTitle} 
+              noteContent={value.noteContent}
+              note = {value}>
+              </NoteItem>
             )
           })
         }   
